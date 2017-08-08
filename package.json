@@ -7,8 +7,9 @@
     "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
     "debug": " babel-node-debug ./src/index.js --presets es2015",
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
-    "start": "node dist",
-    "prestart": "npm run -s build",
+    "start-to-revert": "node dist",
+    "start": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
+    "prestart-to-revert": "npm run -s build",
     "test": "eslint src"
   },
   "eslintConfig": {
@@ -32,13 +33,19 @@
   "license": "MIT",
   "dependencies": {
     "babel-node-debug": "^2.0.0",
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
     "cors": "^2.7.1",
     "express": "^4.13.3",
+    "jsonwebtoken": "^7.4.2",
     "mongoose": "^4.11.4",
     "morgan": "^1.8.0",
     "node-inspector": "^1.1.1",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-google-oauth2": "^0.1.6",
     "resource-router-middleware": "^0.6.0"
   },
   "devDependencies": {

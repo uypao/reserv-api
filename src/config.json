@@ -2,5 +2,16 @@
 	"port": 8080,
 	"bodyLimit": "100kb",
 	"corsHeaders": ["Link"],
-	"mongoDbURL": "mongodb://localhost:27017/reserv"
+	"mongoDbURL": "mongodb://localhost:27017/reserv",
+	"facebook": {
+		"clientId": "1847591728890803",
+		"clientSecret": "64e1b0c9f81d9751b5bf0556a1c476aa",
+		"callback": "http://localhost:8080/auth/callback/facebook"
+	},
+	"google": {
+		"clientId": "971361189450-b5orts6avr7c9h3tgba164rgp7llbcam.apps.googleusercontent.com",
+		"clientSecret": "BOaZZYIpxfFLL77W9WznwngO",
+		"callback": "http://localhost:8080/auth/callback/google"
+	},
+	"secretKey": "supersecretkey"
 }

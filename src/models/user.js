@@ -2,13 +2,29 @@ import Mongoose from 'mongoose';
 let Schema = Mongoose.Schema;
 
 let userSchema = new Schema({
-  username: {
-    type: String,
-    required: true
+  email: {
+    type: String
   },
   password: {
-    type: String,
-    required: true
+    type: String
+  },
+  salt: {
+    type: String
+  },
+  oauth_id: {
+    type: String
+  },
+  display_name: {
+    type: String
+  },
+  picture_url:{
+    type: String
+  },
+  provider: {
+    type: String
+  },
+  gender: {
+    type: String
   },
   client: {
     first_name: {
