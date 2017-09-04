@@ -26,6 +26,10 @@ let userSchema = new Schema({
   gender: {
     type: String
   },
+  is_vendor: {
+    type: Boolean,
+    default: 0
+  },
   client: {
     first_name: {
       type: String
@@ -50,12 +54,30 @@ let userSchema = new Schema({
     business_name: {
       type: String
     },
+    business_detail: {
+      type: String
+    },
+    address: {
+      longitude: {
+        type: Number
+      },
+      latitude: {
+        type: Number
+      }
+    },
+    business_image_path: {
+      type: String
+    },
     email: {
       type: String
     },
     mobile: {
       type: String
-    }
+    },
+    services: [{
+      name: { type: String },
+      price: { type: Number }
+    }]
   }
 })
 

@@ -11,11 +11,9 @@ import { registerPassportStrategies } from './lib/externalAuth';
 import { registerRoutes } from './routes';
 
 let app = express();
-app.server = http.createServer(app);
 
 // logger
 app.use(morgan('dev'));
-
 // parse application/json
 app.use(bodyParser.json())
 
@@ -31,13 +29,11 @@ registerPassportStrategies(passport);
 
 // connect to db
 initializeDb( db => {
-
-	// internal middleware
-	// app.use(middleware({ config, db }));
+	let port = process.env.PORT || config.port
 	registerRoutes(app, passport);
 
-	app.server.listen(process.env.PORT || config.port, () => {
-		console.log(`Started on port ${app.server.address().port}`);
+	app.listen(port, () => {
+		console.log(`Started on port ${port}`);
 	});
 });
 

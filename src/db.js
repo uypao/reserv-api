@@ -10,5 +10,8 @@ export default callback => {
 	promise.then(() => {
 		console.log('Connected.');
 	})
+	.catch((err) => {
+		console.log('CONNECTION FAILED!');
+	})
 	callback();
 }

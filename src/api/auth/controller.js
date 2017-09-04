@@ -6,15 +6,13 @@ export default (passport) => {
   let authService = new AuthService();
 
   api.get('/callback/facebook',
-		passport.authenticate('facebook', { failureRedirect: '/' }), (req, res) => {
-      res.status(200).json(req.user);
-    }
-	);
+    passport.authenticate('facebook', { failureRedirect: '/failed' }),
+    (req, res) => res.redirect('OAuthLogin://login?user=' + JSON.stringify(req.user))
+  );
 
   api.get('/callback/google',
-    passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-      res.status(200).json(req.user);
-    }
+    passport.authenticate('google', { failureRedirect: '/' }),
+    (req, res) => res.redirect('OAuthLogin://login?user=' + JSON.stringify(req.user))
   );
 
   api.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
@@ -38,8 +36,13 @@ export default (passport) => {
       res.status(200).json({success: true, message: data});
     })
     .catch((err) => {
-      res.status(400).json({success: false, message: err});
+      res.status(400).json({success: false, message: err ? err.toString() : null });
     })
+  })
+
+  api.post('/signOut', (req, res) => {
+    req.logout();
+    res.status(200).json({success: true});
   })
 
 

@@ -1,10 +1,10 @@
 import FacebookStrategy from 'passport-facebook';
 import GoogleStrategy from 'passport-google-oauth2';
 import config from '../config.json';
-import UserService from '../api/user/service';
+import AuthService from '../api/auth/service';
 
 export function registerPassportStrategies(passport){
-  const userService = new UserService();
+  const authService = new AuthService();
   // FacebookStrategy
   passport.use('facebook', new FacebookStrategy({
     clientID: config.facebook.clientId,
@@ -12,7 +12,7 @@ export function registerPassportStrategies(passport){
     callbackURL: config.facebook.callback,
     profileFields: ['id', 'displayName', 'picture.type(large)', 'email']
   }, function(access_token, refresh_token, profile, done) {
-    userService.createOauthUser(profile)
+    authService.createOauthUser(profile)
     .then((data) => {
       return done(null, data);
     })
@@ -28,7 +28,7 @@ export function registerPassportStrategies(passport){
     callbackURL: config.google.callback,
     passReqToCallback: true
   }, function(req, accessToken, refreshToken, profile, done) {
-    userService.createOauthUser(profile)
+    authService.createOauthUser(profile)
     .then((data) => {
       return done(null, data);
     })

@@ -6,12 +6,13 @@
 	"facebook": {
 		"clientId": "1847591728890803",
 		"clientSecret": "64e1b0c9f81d9751b5bf0556a1c476aa",
-		"callback": "http://localhost:8080/auth/callback/facebook"
+		"callback": "http://192.168.0.22:8080/auth/callback/facebook"
 	},
 	"google": {
 		"clientId": "971361189450-b5orts6avr7c9h3tgba164rgp7llbcam.apps.googleusercontent.com",
 		"clientSecret": "BOaZZYIpxfFLL77W9WznwngO",
-		"callback": "http://localhost:8080/auth/callback/google"
+		"callback": "http://localhost:8080/auth/callback/google",
+		"geocodingApiKey": "AIzaSyBPpZx5AvuuKGTCrUkUQ4IG-g5z65y_5vk"
 	},
 	"secretKey": "supersecretkey"
 }
